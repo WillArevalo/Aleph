@@ -1,0 +1,52 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg fixed-top navbar-light" id="main-navbar">
+    <div class="container">
+        <a class="navbar-brand pr-5" style="border-right: 1px solid #efefef;" href="">
+            <img src="{% static "img/aleph.png" %}" height="45" class="d-inline-block align-top"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item mr-2">
+                    {% if request.user.profile.picture %}
+                        <a href="">
+                            <img src="{{ request.user.profile.picture.url }}" height="35" class="d-inline-block align-top rounded-circle"/>
+                        </a>    
+                    {% else %}
+                        <img src="{% static 'img/default-profile.png' %}" height="35" class="d-inline-block align-top rounded-circle"/>
+                    {% endif %}
+                    <a href="" style="color:inherit;text-decoration:inherit;" >
+                        <i class="lead">@TestUser</i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-plus"></i>
+                        <span class="d-sm-block d-md-none d-xl-none">Add Post</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+
+                <li class="nav-item nav-icon">
+                    <a href="">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="d-sm-block d-md-none d-xl-none">Log Out</span>
+                    </a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+html, body {
+    background: #fafafa;
+    height: 100%;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+}
+
+#auth-container {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+}
+
+#main-navbar {
+    background: rgba(249,247,246,0.8);
+    border-bottom: 1px solid rgba(0,0,0,.0975);
+}
+
+.post-container {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+}
+
+.nav-icon a {
+    color: #262626;
+    font-size: 1.3em;
+    display: block;
+    margin-top: .2em;
+    margin-left: 1.2em;
+    font-weight: 100;
+}
+.navbar-light .navbar-nav .nav-link{
+    color: rgba(38,38,38,1) !important;
+}
+.nav-icon a:hover {
+    color: #fd7253;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+    color: rgba(253,114,83,1) !important;
+}
+#profile-box {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.0975);
+    border-radius: 1px;
+    margin-top: 6em;
+}
+
+#user-posts #post-thumb {
+    background: #fff;
+}
