@@ -26,9 +26,14 @@ urlpatterns = [
         name='logout'
     ),
     path(
-        route='me/profile/',
+        route='hunter/profile/',
         view=views.UpdateProfileHunterView.as_view(),
         name='update_hunter_profile'
+    ),
+    path(
+        route='prey/profile/',
+        view=views.UpdateProfilePreyView.as_view(),
+        name='update_prey_profile'
     ),
 
     # Posts

@@ -15,6 +15,10 @@
                         <a href="{% url "accounts:detail" request.user.username %}">
                             <img src="{{ request.user.profilehunter.picture.url }}" height="35" class="d-inline-block align-top rounded-circle"/>
                         </a>    
+                    {% elif request.user.profileprey.picture %}
+                        <a href="{% url "accounts:detail" request.user.username %}">
+                            <img src="{{ request.user.profileprey.picture.url }}" height="35" class="d-inline-block align-top rounded-circle"/>
+                        </a>    
                     {% else %}
                         <img src="{% static 'img/default-profile.png' %}" height="35" class="d-inline-block align-top rounded-circle"/>
                     {% endif %}

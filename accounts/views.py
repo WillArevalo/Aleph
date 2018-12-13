@@ -14,7 +14,7 @@ from accounts.forms import SignupForm
 
 # Models
 
-from accounts.models import ProfileHunter
+from accounts.models import ProfileHunter, ProfilePrey
 
 # Create your views here.
 
@@ -48,6 +48,20 @@ class UpdateProfileHunterView(LoginRequiredMixin, UpdateView):
     def get_object(self):
         """Return user's profile"""
         return self.request.user.profilehunter
+    def get_success_url(self):
+        """Return to user's profile."""
+        username = self.object.user.username
+        return reverse('accounts:detail', kwargs={'username_slug': username})
+
+class UpdateProfilePreyView(LoginRequiredMixin, UpdateView):
+    """Update a user's profile view"""
+    template_name = 'accounts/update_profile.html'
+    model = ProfilePrey
+    fields = ['biography', 'phone_number', 'picture']
+    # Return success url
+    def get_object(self):
+        """Return user's profile"""
+        return self.request.user.profileprey
     def get_success_url(self):
         """Return to user's profile."""
         username = self.object.user.username
