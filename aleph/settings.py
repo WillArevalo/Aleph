@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Local Apps
-    'accounts'
+    'accounts',
+    'abilities',
+    'vacancies'
 ]
 
 MIDDLEWARE = [
@@ -50,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Local Middlewares
+    'aleph.middleware.ProfileCompletionMiddleware'
 ]
 
 ROOT_URLCONF = 'aleph.urls'

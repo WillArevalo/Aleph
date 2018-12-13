@@ -16,8 +16,8 @@
                 {% csrf_token %}
 
                 <div class="media">
-                    {% if user.profile.picture %}
-                        <img src="{{ user.profile.picture.url }}" class="rounded-circle" height="50" />
+                    {% if user.profilehunter.picture %}
+                        <img src="{{ user.profilehunter.picture.url }}" class="rounded-circle" height="50" />
                     {% else%}
                         <img src="{% static 'img/default-profile.png' %}" class="rounded-circle" height="50" />
                     {% endif %}
@@ -40,7 +40,7 @@
                         {% if form.biography.errors %}
                         	is-invalid
                         {% endif %}" 
-                    	name="biography">{% if form.errors %}{{form.biography.value}}{% else %}{{user.profile.biography }}{% endif %}</textarea>
+                    	name="biography">{% if form.errors %}{{form.biography.value}}{% else %}{{user.profilehunter.biography }}{% endif %}</textarea>
                 	<div class="invalid-feedback">{% for error in form.biography.errors %}{{error}}{% endfor %}</div>
                 </div>
 
@@ -54,7 +54,7 @@
                         type="text"
                         name="phone_number"
                         placeholder="Phone number"
-                        value="{% if form.errors %}{{form.phone_number.value}}{% else %}{{ user.profile.phone_number }}{% endif %}"
+                        value="{% if form.errors %}{{form.phone_number.value}}{% else %}{{ user.profilehunter.phone_number }}{% endif %}"
                     />
                     <div class="invalid-feedback">
                     	{% for error in form.phone_number.errors %}

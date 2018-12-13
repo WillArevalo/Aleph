@@ -27,8 +27,8 @@ urlpatterns = [
     ),
     path(
         route='me/profile/',
-        view=views.UpdateProfileView.as_view(),
-        name='update_profile'
+        view=views.UpdateProfileHunterView.as_view(),
+        name='update_hunter_profile'
     ),
 
     # Posts

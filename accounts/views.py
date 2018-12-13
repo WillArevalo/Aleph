@@ -14,7 +14,7 @@ from accounts.forms import SignupForm
 
 # Models
 
-from accounts.models import Profile
+from accounts.models import ProfileHunter
 
 # Create your views here.
 
@@ -39,15 +39,15 @@ class LoginView(auth_views.LoginView):
 class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
     """Logout View."""
 
-class UpdateProfileView(LoginRequiredMixin, UpdateView):
+class UpdateProfileHunterView(LoginRequiredMixin, UpdateView):
     """Update a user's profile view"""
     template_name = 'accounts/update_profile.html'
-    model = Profile
+    model = ProfileHunter
     fields = ['biography', 'phone_number', 'picture']
     # Return success url
     def get_object(self):
         """Return user's profile"""
-        return self.request.user.profile
+        return self.request.user.profilehunter
     def get_success_url(self):
         """Return to user's profile."""
         username = self.object.user.username

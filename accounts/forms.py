@@ -6,7 +6,7 @@ from django import forms
 
 # Models
 from django.contrib.auth.models import User
-from accounts.models import Profile
+from accounts.models import ProfileHunter
 
 class SignupForm(forms.Form):
     """Signup form"""
@@ -68,5 +68,5 @@ class SignupForm(forms.Form):
         data.pop('password_confirmation')
 
         user = User.objects.create_user(**data)
-        profile = Profile(user=user)
+        profile = ProfileHunter(user=user)
         profile.save()
