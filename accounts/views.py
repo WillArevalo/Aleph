@@ -137,6 +137,7 @@ def getAuthorizeCode(request):
     context = {}
     code = (request.GET.get('code'))
     context["authorization_code"] = code
+    print(code)
     return render(request, 'accounts/authorize-code.html', context)
 
 # Función que obtiene el token de acceso
@@ -162,6 +163,7 @@ def getAccessToken(request):
         # ejecución de la petición
         r = requests.post(url, params = params, headers = headers)
         r = r.json()
-    context['token_code'] = r['access_token']
+        context['token_code'] = r['access_token']
+        print('TOKEN = {}'.format(context))
     return render(request, 'accounts/token-code.html', context)
 
