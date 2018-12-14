@@ -20,7 +20,11 @@
   			</button>
 		</div>
 	{% endif %}
-	<form method="POST" action="{% url 'accounts:signup' %}">
+	{% if is_hunter %}
+	<form method="POST" action="{% url 'accounts:signuphunter' %}">
+	{% else %}
+	<form method="POST" action="{% url 'accounts:signupprey' %}">   
+	{% endif %}
 		{% csrf_token %}
 		{% for input in form %}
 			<div class="form-group">

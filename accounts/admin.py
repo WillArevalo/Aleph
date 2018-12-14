@@ -14,7 +14,7 @@ from accounts.models import ProfilePrey
 class ProfileAdmin(admin.ModelAdmin):
     """Profile Admin"""
     # Lista de los atributos que mostrara en el admin
-    list_display = ('pk', 'user', 'phone_number', 'picture')
+    list_display = ('pk', 'user', 'phone_number', 'picture','is_hunter')
     # Lista de links que llevan al detalle
     list_display_links = ('pk', 'user')
     # Lista de editables in situ
@@ -73,7 +73,7 @@ class ProfileAdmin(admin.ModelAdmin):
 class ProfileAdmin(admin.ModelAdmin):
     """Profile Admin"""
     # Lista de los atributos que mostrara en el admin
-    list_display = ('pk', 'user', 'phone_number', 'picture')
+    list_display = ('pk', 'user', 'phone_number', 'picture', 'is_hunter')
     # Lista de links que llevan al detalle
     list_display_links = ('pk', 'user')
     # Lista de editables in situ

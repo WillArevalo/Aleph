@@ -12,13 +12,13 @@
     <div class="row justify-content-md-center">
         <div class="col-6 p-4" id="profile-box">
 
-            <form action="{% url 'accounts:update_hunter_profile' %}" method="POST" enctype="multipart/form-data">
+            <form action="{% if profile.is_hunter %}{% url 'accounts:update_hunter_profile' %}{% else %}{% url 'accounts:update_prey_profile' %}{% endif %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <div class="media">
-                    {% if user.profilehunter.picture %}
-                        <img src="{{ user.profilehunter.picture.url }}" class="rounded-circle" height="50" />
-                    {% else%}
+                    {% if profile.picture %}
+                        <img src="{{ profile.picture.url }}" class="rounded-circle" height="50" />
+                    {% else %}
                         <img src="{% static 'img/default-profile.png' %}" class="rounded-circle" height="50" />
                     {% endif %}
 
@@ -40,7 +40,7 @@
                         {% if form.biography.errors %}
                         	is-invalid
                         {% endif %}" 
-                    	name="biography">{% if form.errors %}{{form.biography.value}}{% else %}{{user.profilehunter.biography }}{% endif %}</textarea>
+                    	name="biography">{% if form.errors %}{{form.biography.value}}{% else %}{{profile.biography }}{% endif %}</textarea>
                 	<div class="invalid-feedback">{% for error in form.biography.errors %}{{error}}{% endfor %}</div>
                 </div>
 
@@ -49,19 +49,39 @@
                     <input
                         class="form-control 
                         {% if form.phone_number.errors %}
-                        	is-invalid
+                            is-invalid
                         {% endif %}"
                         type="text"
                         name="phone_number"
                         placeholder="Phone number"
-                        value="{% if form.errors %}{{form.phone_number.value}}{% else %}{{ user.profilehunter.phone_number }}{% endif %}"
+                        value="{% if form.errors %}{{form.phone_number.value}}{% else %}{{ profile.phone_number }}{% endif %}"
                     />
                     <div class="invalid-feedback">
-                    	{% for error in form.phone_number.errors %}
-                    		{{error}}
-                    	{% endfor %}
+                        {% for error in form.phone_number.errors %}
+                            {{error}}
+                        {% endfor %}
                     </div>
                 </div>
+                {% if form.profession %}
+                <div class="form-group">
+                    <label>Profesión</label>
+                    <input
+                        class="form-control 
+                        {% if form.profession.errors %}
+                            is-invalid
+                        {% endif %}"
+                        type="text"
+                        name="profession"
+                        placeholder="Profesión"
+                        value="{% if form.errors %}{{form.profession.value}}{% else %}{{ profile.profession }}{% endif %}"
+                    />
+                    <div class="invalid-feedback">
+                        {% for error in form.phone_number.errors %}
+                            {{error}}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
 
                 <button type="submit" class="btn btn-primary btn-block mt-5">Update info</button>
             </form>

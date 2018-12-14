@@ -11,9 +11,14 @@ urlpatterns = [
 
     # Management
     path(
-        route='signup/',
-        view=views.SignupView.as_view(),
-        name='signup'
+        route='signup/hunter',
+        view=views.SignupHunterView.as_view(),
+        name='signuphunter'
+    ),
+    path(
+        route='signup/prey',
+        view=views.SignupPreyView.as_view(),
+        name='signupprey'
     ),
     path(
         route='login/',

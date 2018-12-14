@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Local Middlewares
-    'aleph.middleware.ProfileCompletionMiddleware'
+    #'aleph.middleware.ProfileCompletionMiddleware'
 ]
 
 ROOT_URLCONF = 'aleph.urls'

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+<title>Create new vancancy</title>
+{% endblock %}
+
+{% block container %}
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-6 pt-3 pb-3" id="profile-box">
+                <h4 class="mb-4">Post a new vancacy!</h4>
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <input type="hidden" name="profilehunter" value="{{ request.user.profilehunter.pk }}" />
+
+                    {# Website field #}
+                    <div class="form-group">
+                        <input
+                            class="form-control {% if form.name.errors %}is-invalid{% endif %}"
+                            type="text"
+                            name="name"
+                            placeholder="Nombre"
+                        >
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors %}{{ error }}{% endfor %}
+                        </div>
+                    </div>
+                    {# description field #}
+                    <div class="form-group">
+                        <input
+                            class="form-control {% if form.description.errors %}is-invalid{% endif %}"
+                            type="text"
+                            name="description"
+                            placeholder="description"
+                        >
+                        <div class="invalid-feedback">
+                            {% for error in form.description.errors %}{{ error }}{% endfor %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{form.requirements}}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mt-5">Publish!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

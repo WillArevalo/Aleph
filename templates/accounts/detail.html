@@ -9,14 +9,13 @@
     <div class="container mb-5" style="margin-top: 8em;">
         <div class="row">
             <div class="col-sm-4 d-flex justify-content-center">
-                <img src="{{ user.profilehunter.picture.url }}" alt="@{{ user.username}}" class="rounded-circle" max-width="150px" height="150px" />
+                <img src="{{ user.profileprey.picture.url }}{{ user.profilehunt.picture.url }}" alt="@{{ user.username}}" class="rounded-circle" max-width="150px" height="150px" />
             </div>
             <div class="col-sm-8">
                 <h2 style="font-weight: 100;">
                     {{ user.username }}
                     {% if user == request.user %}
-                        <a
-                            href="{% url "accounts:update_hunter_profile" %}"
+                        <a href="{% if user.profilehunter %}{% url 'accounts:update_hunter_profile' %}{% else %}{% url 'accounts:update_prey_profile' %}{% endif %}"
                             class="ml-5 btn btn-sm btn-outline-info"
                         >
                             Edit profile
@@ -43,12 +42,17 @@
                 </div>
                 <div class="row mt-4">
                     <div class="col-sm-12">
-                        <p>{{ user.profilehunter.biography }}</p>
+                        <p>{{ user.profilehunter.biography }}{{user.profileprey.biography}}</p>
+                        <p>{% if user.profileprey.profession %}
+                            <b>Profesión</b>
+                            <br>
+                            {{user.profileprey.profession}}
+                        
+                        {% endif %}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <hr>
-
 {% endblock %}

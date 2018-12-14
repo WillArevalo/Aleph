@@ -26,6 +26,7 @@ class ProfileHunter(models.Model):
         null=True
     )
 
+    is_hunter = models.BooleanField(default=True)
     # time
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -50,6 +51,8 @@ class ProfilePrey(models.Model):
         blank=True,
         null=True
     )
+
+    is_hunter = models.BooleanField(default=False)
 
     # time
     created = models.DateTimeField(auto_now_add=True)

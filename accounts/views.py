@@ -10,7 +10,7 @@ from django.views.generic import DetailView, FormView, UpdateView
 from django.contrib.auth.models import User
 
 # Forms
-from accounts.forms import SignupForm
+from accounts.forms import SignupHunterForm, SignupPreyForm
 
 # Models
 
@@ -19,17 +19,28 @@ from accounts.models import ProfileHunter, ProfilePrey
 # Create your views here.
 
 
-class SignupView(FormView):
+class SignupHunterView(FormView):
     """Signup View."""
     template_name = 'accounts/signup.html'
-    form_class = SignupForm
+    form_class = SignupHunterForm
     success_url = reverse_lazy('accounts:login')
-
+    extra_context = {'is_hunter':True}
     def form_valid(self, form):
         """If the form is valid save the user"""
         form.save()
         return super().form_valid(form)
 
+
+class SignupPreyView(FormView):
+    """Signup View."""
+    template_name = 'accounts/signup.html'
+    form_class = SignupPreyForm
+    success_url = reverse_lazy('accounts:login')
+    extra_context = {'is_hunter':False}
+    def form_valid(self, form):
+        """If the form is valid save the user"""
+        form.save()
+        return super().form_valid(form)
 
 class LoginView(auth_views.LoginView):
     """Login view"""
@@ -44,6 +55,7 @@ class UpdateProfileHunterView(LoginRequiredMixin, UpdateView):
     template_name = 'accounts/update_profile.html'
     model = ProfileHunter
     fields = ['biography', 'phone_number', 'picture']
+    context_object_name = 'profile'
     # Return success url
     def get_object(self):
         """Return user's profile"""
@@ -57,7 +69,8 @@ class UpdateProfilePreyView(LoginRequiredMixin, UpdateView):
     """Update a user's profile view"""
     template_name = 'accounts/update_profile.html'
     model = ProfilePrey
-    fields = ['biography', 'phone_number', 'picture']
+    fields = ['biography', 'phone_number', 'picture', 'profession']
+    context_object_name = 'profile'
     # Return success url
     def get_object(self):
         """Return user's profile"""
@@ -76,3 +89,8 @@ class UserDetailView(DetailView):
     queryset = User.objects.all()
     context_object_name = 'user'
 
+    def get_contex_data(self, **kwargs):
+        context = super().get_contex_data(**kwargs)
+        user = self.get_object()
+        context['profile'] = ProfilePrey.objects.get(user=user)
+        return context
