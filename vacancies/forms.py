@@ -17,4 +17,4 @@ class VacancyForm(forms.ModelForm):
 	class Meta:
 		"""Form settings."""
 		model = Vacancy
-		fields = ('name','description','requirements')
+		fields = ('name','description','requirements','hunter')

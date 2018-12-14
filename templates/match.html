@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block head_content %}
+    <title>Match!</title>
+{% endblock head_content %}
+{% block container %}
+    <div class="row">
+    	<div class="col-sm-12 mt-3">
+    		<div class="card col-sm-12 mt-3">
+			  <h5 class="card-header">Match!{% if user.profilehunter %}<a href="/accounts/felipe" class="ml-5">@felipe</a>{% elif user.profileprey %}<a href="/accounts/yojan" class="ml-5">@yojan</a>{% endif %}</h5>
+			  <div class="card-body">
+			    <h5 class="card-title">Ocupación: {{match.ocupacion}}</h5>
+			    <p class="card-text"></p>
+			    <h5>Habilidades</h5>
+				<ul>
+		    		<li>{{match.habilidad_1}}</li>
+		    		<li>{{match.habilidad_2}}</li>
+		    		<li>{{match.habilidad_3}}</li>  
+					
+				</ul>
+			    <a href="#" class="btn btn-primary">contactar</a>
+			  </div>
+			</div>
+    	</div>
+    </div>
+{% endblock container %}

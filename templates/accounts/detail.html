@@ -18,8 +18,17 @@
                         <a href="{% if user.profilehunter %}{% url 'accounts:update_hunter_profile' %}{% else %}{% url 'accounts:update_prey_profile' %}{% endif %}"
                             class="ml-5 btn btn-sm btn-outline-info"
                         >
-                            Edit profile
+                            Editar perfil
                         </a>
+                        {% if user.profilehunter %}
+                            
+                        <a href="{% url 'vacancies:createvacancy' %}"
+                            class="ml-5 btn btn-sm btn-outline-info"
+                        >
+                            Crear Vacante
+                        </a>
+                        
+                        {% endif %}
                     {% else %}
                         <a
                             href=""
@@ -28,21 +37,15 @@
                             Follow
                         </a>
                     {% endif %}
+                    <a href="{% url 'match' %}"
+                            class="ml-5 btn btn-sm btn-outline-info"
+                        >
+                            Mis Match
+                        </a>
                 </h2>
-                <div class="row mt-2" style="font-size: 1.2em">
-                    <div class="col-sm-4">
-                        <b>{{ user.profilehunter.posts_count }}785</b> posts
-                    </div>
-                    <div class="col-sm-4">
-                        <b>{{ user.profilehunter.followers }}1,401</b> followers
-                    </div>
-                    <div class="col-sm-4">
-                        <b>{{ user.profilehunter.following }}491</b> following
-                    </div>
-                </div>
                 <div class="row mt-4">
                     <div class="col-sm-12">
-                        <p>{{ user.profilehunter.biography }}{{user.profileprey.biography}}</p>
+                        <p>{{ user.profilehunter.biography }} {{ user.profileprey.biography }}</p>
                         <p>{% if user.profileprey.profession %}
                             <b>Profesión</b>
                             <br>

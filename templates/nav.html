@@ -1,9 +1,10 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg fixed-top navbar-light fixed -top" id="main-navbar">
     <div class="container">
-        <a class="navbar-brand pr-5" style="border-right: 1px solid #efefef;" href="">
+        <a class="navbar-brand pr-5" {% if not user.is_anonymous %} style="border-right: 1px solid #efefef;"{% endif %} href="{% url 'home' %}">
             <img src="{% static 'img/match.png' %}" alt="" height="60" width="60px"> 
         </a>
+        {% if not user.is_anonymous %}
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,6 +12,7 @@
             <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item mr-2">
+                        
                     {% if request.user.profilehunter.picture %}
                         <a href="{% url "accounts:detail" request.user.username %}">
                             <img src="{{ request.user.profilehunter.picture.url }}" height="35" class="d-inline-block align-top rounded-circle"/>
@@ -22,6 +24,7 @@
                     {% else %}
                         <img src="{% static 'img/default-profile.png' %}" height="35" class="d-inline-block align-top rounded-circle"/>
                     {% endif %}
+                    
                     <a href="{% url "accounts:detail" request.user.username %}" style="color:inherit;text-decoration:inherit;" >
                         <i class="lead">@{{request.user.username}}</i>
                     </a>
@@ -47,11 +50,13 @@
                 </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0" method="POST" action="/">
+
+            <!--form class="form-inline my-2 my-lg-0" method="POST" action="/">
               {% csrf_token %}
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form-->
         </div>
+        {% endif %}
     </div>
 </nav>

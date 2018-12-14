@@ -14,7 +14,7 @@
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
 
-                    <input type="hidden" name="profilehunter" value="{{ request.user.profilehunter.pk }}" />
+                    <input type="hidden" name="hunter" value="{{ request.user.profilehunter.pk }}" />
 
                     {# Website field #}
                     <div class="form-group">

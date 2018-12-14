@@ -17,16 +17,25 @@
 {% endblock head_content %}
 {% block container %}
     <div class="row">
-    	{% for vacancy in vacancies %}
-    		<h3 style="width: 100%">{{vacancy.name}}</h3>
-    		<p style="width: 100%">{{vacancy.description}}</p>
-    		<p style="width: 100%">requerimientos</p>
-    		<ul>
-	    		{% for ability in vacancy.requirements.all %}
-	    			<li>{{ability}}</li>	
-	    		{% endfor %}
-    			
-    		</ul>
-    	{% endfor %}
+        <div class="col-sm-12 mt-1">
+        	{% for vacancy in vacancies %}
+                <div class="card mt-4">
+                  <h5 class="card-header">Ofertado por: {{vacancy.hunter.user.username}}</h5>
+                  <div class="card-body">
+                    <h5 class="card-title">{{vacancy.name}}</h5>
+                    <p class="card-text">{{vacancy.description}}</p>
+                    <ul>
+                        {% for requirement in vacancy.requirements.all %}
+                            <li>{{requirement}}</li>    
+                        {% endfor %}
+                        
+                    </ul>
+                    <a href="#" class="btn btn-primary">Aplicar</a>
+                  </div>
+                </div>
+        	{% endfor %}
+            
+        </div>
     </div>
+
 {% endblock container %}
