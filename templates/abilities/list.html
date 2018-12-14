@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block head_content %}
+    <title>list</title>
+{% endblock head_content %}
+{% block container %}
+    <div class="container">
+    	<div class="row">
+    		<ul>
+				{% for ability in abilities %}
+					<li>{{ability}}</li>
+				{% endfor %}
+    			
+    		</ul>
+    	</div>
+    </div>
+{% endblock container %}

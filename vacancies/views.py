@@ -3,7 +3,9 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
+# models
+from .models import Vacancy
+from abilities.models import Ability
 # Forms
 from vacancies.forms import VacancyForm
 # Create your views here.
@@ -21,3 +23,8 @@ class CreateVacancyView(LoginRequiredMixin, CreateView):
         context = super().get_context_data(**kwargs)
         context['profile'] = self.request.user.profilehunter
         return context
+
+class VacanciesListView(LoginRequiredMixin, ListView):
+    template_name = 'vacancies/feed.html'
+    model = Vacancy
+    context_object_name = 'vacancies'

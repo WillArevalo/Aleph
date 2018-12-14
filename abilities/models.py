@@ -6,7 +6,7 @@ from django.db import models
 
 class Ability(models.Model):
     """Ability Model"""
-    skill = models.CharField(max_length=150)
+    skill = models.CharField(max_length=150,unique=True)
 
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)

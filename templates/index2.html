@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+<title>Hay camello</title>
+{% endblock %}
+
+{% block container %}
+	<div class="row">
+		<div class="col-md">
+			<a href="{% url "accounts:update_prey_profile" %}">prey</a>
+		</div>
+		<div class="col-md">
+			<a href="{% url "accounts:update_hunter_profile" %}">hunter</a>
+		</div>
+	</div>
+{% endblock container %}

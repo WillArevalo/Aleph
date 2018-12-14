@@ -8,4 +8,9 @@ urlpatterns = [
         view=views.CreateVacancyView.as_view(),
         name='createvacancy'
     ),
+    path(
+    	route='feed',
+    	view = views.VacanciesListView.as_view(),
+    	name='feed'
+    ),
 ]

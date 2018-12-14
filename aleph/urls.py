@@ -13,5 +13,6 @@ urlpatterns = [
     # Accounts
     path('accounts/', include(('accounts.urls', 'accounts'), namespace='accounts')),
     path('', TemplateView.as_view(template_name="home.html")),
+    path('abilities/',include(('abilities.urls','abilities'),namespace='abilities')),
     path('vacancies/', include(('vacancies.urls', 'vacancies'),namespace='vacancies')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

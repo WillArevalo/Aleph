@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block head_content %}
+    <title>Vacantes</title>
+{% endblock head_content %}
+{% block container %}
+    <div class="row">
+    	{% for vacancy in vacancies %}
+    		<h3 style="width: 100%">{{vacancy.name}}</h3>
+    		<p style="width: 100%">{{vacancy.description}}</p>
+    		<p style="width: 100%">requerimientos</p>
+    		<ul>
+	    		{% for ability in vacancy.requirements.all %}
+	    			<li>{{ability}}</li>	
+	    		{% endfor %}
+    			
+    		</ul>
+    	{% endfor %}
+    </div>
+{% endblock container %}
