@@ -2,24 +2,73 @@
 {% block head_content %}
     <title>Match!</title>
 {% endblock head_content %}
+{% load static %}
 {% block container %}
-    <div class="row">
-    	<div class="col-sm-12 mt-3">
-    		<div class="card col-sm-12 mt-3">
-			  <h5 class="card-header">Match!{% if user.profilehunter %}<a href="/accounts/felipe" class="ml-5">@felipe</a>{% elif user.profileprey %}<a href="/accounts/yojan" class="ml-5">@yojan</a>{% endif %}</h5>
-			  <div class="card-body">
-			    <h5 class="card-title">Ocupación: {{match.ocupacion}}</h5>
-			    <p class="card-text"></p>
-			    <h5>Habilidades</h5>
-				<ul>
-		    		<li>{{match.habilidad_1}}</li>
-		    		<li>{{match.habilidad_2}}</li>
-		    		<li>{{match.habilidad_3}}</li>  
-					
-				</ul>
-			    <a href="#" class="btn btn-primary">contactar</a>
-			  </div>
-			</div>
-    	</div>
+    <div class="row mt-5">
+    	<div class="media border border-info rounded p-5 animated mt-5" id='myDIV'>
+        <div class="row">
+          <div class="col-2">
+            <img class="mr-3" src={% static "img/man.png" %} alt="Generic placeholder image">
+          </div>
+          <div class="col-7 ">
+            <h5 class="lead mt-0">{% if user.profilehunter %}<a href="/accounts/felipe" class="ml-0">@felipe</a>{% elif user.profileprey %}<a href="/accounts/yojan" class="ml-0">@yojan</a>{% endif %}</h5>
+            <p><b>Ocupacion: </b><b>{{match.ocupacion}}</b></p>
+            <h4 class="lead mt-0">Habilidades</h4>
+
+            <a href="#" class="badge badge-primary" style="font-size: 18px; padding: 7px; font-family: 'Montserrat', sans-serif, sans-serif;">#{{match.habilidad_1}}</a>
+          <a href="#" class="badge badge-secondary" style="font-size: 18px; padding: 7px; font-family: 'Montserrat', sans-serif, sans-serif;">#{{match.habilidad_2}}</a>
+          <a href="#" class="badge badge-success" style="font-size: 18px; padding: 7px; font-family: 'Montserrat', sans-serif, sans-serif;">#{{match.habilidad_3}}</a>
+
+          </div>
+          <div class="col-3" style="justify-content: center;">
+            <div class="row">
+              <div class="col-6">
+                
+                <button onclick="Left()"  style="background: url({% static 'img/exito.png' %}); background-repeat: no-repeat; width:90px; height:90px; border-radius: 10%; border: 0;
+                color: inherit;
+                /* cursor: default; */
+                font: inherit;
+                line-height: normal;
+                overflow: visible;
+                padding: 0;
+                -webkit-user-select: none; /* for button */
+                 -webkit-appearance: button; /* for input */
+                   -moz-user-select: none;
+                    -ms-user-select: none;"></button>
+              </div>
+              <div class="col-6">
+                <button onclick="Right()"  style="background: url({% static 'img/error.png' %}); background-repeat: no-repeat; width:90px; height:90px; border-radius: 10%; border: 0;
+                color: inherit;
+                /* cursor: default; */
+                font: inherit;
+                line-height: normal;
+                overflow: visible;
+                padding: 0;
+                -webkit-user-select: none; /* for button */
+                 -webkit-appearance: button; /* for input */
+                   -moz-user-select: none;
+                    -ms-user-select: none;"></button>
+              </div>
+              
+
+            <p id="demo"></p>
+
+            <script>
+            function Left() {
+              var element = document.getElementById("myDIV");
+              element.classList.add("fadeOutLeft");
+            }
+            </script>
+             <script>
+            function Right() {
+              var element = document.getElementById("myDIV");
+              element.classList.add("fadeOutRight");
+            }
+            </script>
+
+            </div>
+          </div>
+        </div>
+    </script></script></div></div></div></div></div>
     </div>
 {% endblock container %}

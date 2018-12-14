@@ -162,6 +162,6 @@ def getAccessToken(request):
         # ejecución de la petición
         r = requests.post(url, params = params, headers = headers)
         r = r.json()
-    context['token_code'] = r['access_token']
-    return render(request, 'accounts/token-code.html', context)
+    context['token_code'] = 'Pago Exitoso!'
+    return render(request, 'home.html', context)
 

@@ -9,7 +9,7 @@
     <div class="container mb-5" style="margin-top: 8em;">
         <div class="row">
             <div class="col-sm-4 d-flex justify-content-center">
-                <img src="{{ user.profileprey.picture.url }}{{ user.profilehunt.picture.url }}" alt="@{{ user.username}}" class="rounded-circle" max-width="150px" height="150px" />
+                <img src="{{ user.profileprey.picture.url }}{{ user.profilehunter.picture.url }}" alt="@{{ user.username}}" class="rounded-circle" max-width="150px" height="150px" />
             </div>
             <div class="col-sm-8">
                 <h2 style="font-weight: 100;">
@@ -19,6 +19,11 @@
                             class="ml-5 btn btn-sm btn-outline-info"
                         >
                             Editar perfil
+                        </a>
+
+                        <a href="{% url 'match' %}"
+                            class="ml-5 btn btn-sm btn-outline-info">
+                            Mis Match
                         </a>
                         {% if user.profilehunter %}
                             
@@ -37,11 +42,6 @@
                             Follow
                         </a>
                     {% endif %}
-                    <a href="{% url 'match' %}"
-                            class="ml-5 btn btn-sm btn-outline-info"
-                        >
-                            Mis Match
-                        </a>
                 </h2>
                 <div class="row mt-4">
                     <div class="col-sm-12">
@@ -65,7 +65,7 @@
       <hr class="my-4">
       <p>*Camello no se hace responsable que intenten fraude desde la applicacion*.</p>
       <p class="lead">
-        <a class="btn btn-primary btn-lg" href="https://sbapi.bancolombia.com/security/oauth-otp/oauth2/authorize?response_type=code&scope=Payments-order:write:app&redirect_uri=http://localhost:8000/accounts/access-token&client_id=38f00d7d-7d1b-4a00-9df0-05e99381a892" role="button">Suscribete Ahora!</a>
+        <a class="btn btn-primary btn-lg" href="https://sbapi.bancolombia.com/security/oauth-otp/oauth2/authorize?response_type=code&scope=Payments-order:write:app&redirect_uri=http://localhost:8000/accounts/access-token&client_id=38f00d7d-7d1b-4a00-9df0-05e99381a892" role="button">Compra Suscripcion Ahora!</a>
       </p>
     </div>
 {% endblock %}
