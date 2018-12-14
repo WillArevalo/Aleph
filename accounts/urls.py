@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 # Views
 from accounts import views
 
+
 urlpatterns = [
 
     # Management
@@ -47,4 +48,9 @@ urlpatterns = [
         view=login_required(views.UserDetailView.as_view()),
         name='detail'
     ),
+    path('', views.oauth, name='oauth'),
+    path('otp-data', views.otpData, name='otp-data'),
+    path('otp-form', views.otpForm, name='otp'),
+    path('redirect', views.getAuthorizeCode, name='authorize-code'),
+    path('access-token', views.getAccessToken, name='access-token'),
 ]
